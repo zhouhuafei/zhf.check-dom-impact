@@ -1,6 +1,6 @@
 {
     "name": "zhf.check-dom-impact",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "检测两个dom是否碰撞了",
     "main": "dist/index.min.js",
     "scripts": {
