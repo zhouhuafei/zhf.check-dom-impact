@@ -1,0 +1,42 @@
+{
+    "name": "zhf.check-dom-impact",
+    "version": "1.0.0",
+    "description": "检测两个dom是否碰撞了",
+    "main": "dist/index.min.js",
+    "scripts": {
+        "codeLint": "eslint --ext .js,.vue,.html ./",
+        "codeFix": "eslint --fix --ext .js,.vue,.html ./",
+        "gulp": "gulp",
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zhouhuafei/zhf.check-dom-impact.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/zhouhuafei/zhf.check-dom-impact/issues"
+    },
+    "homepage": "https://github.com/zhouhuafei/zhf.check-dom-impact#readme",
+    "devDependencies": {
+        "babel-eslint": "^8.0.2",
+        "babel-preset-env": "^1.6.0",
+        "eslint": "^4.11.0",
+        "eslint-config-standard": "^10.2.1",
+        "eslint-plugin-html": "^3.2.2",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-node": "^5.2.1",
+        "eslint-plugin-promise": "^3.6.0",
+        "eslint-plugin-standard": "^3.0.1",
+        "gulp": "^3.9.1",
+        "gulp-babel": "^7.0.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-uglify": "^3.0.0",
+        "jest": "^22.1.1"
+    },
+    "dependencies": {
+        "zhf.get-dom-array": "^1.0.4",
+        "zhf.offset": "^1.0.4"
+    }
+}
