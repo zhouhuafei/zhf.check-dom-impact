@@ -10,7 +10,7 @@ function checkDomImpact(element1, element2) {
     var isMoreLeft = offset(dom1).left > offset(dom2).left + dom2.offsetWidth;
     var isLessRight = offset(dom1).left + dom1.offsetWidth < offset(dom2).left;
     var isMoreTop = offset(dom1).top > offset(dom2).top + dom2.offsetHeight;
-    var isLessBottom = offset(dom1).top + dom2.offsetHeight < offset(dom2).top;
+    var isLessBottom = offset(dom1).top + dom1.offsetHeight < offset(dom2).top;
     return !(isMoreLeft || isLessRight || isMoreTop || isLessBottom);
 }
 
