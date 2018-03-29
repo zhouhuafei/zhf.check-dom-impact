@@ -5,13 +5,54 @@ var getDomArray = require('zhf.get-dom-array');
 
 // 检测dom碰撞
 function checkDomImpact(element1, element2) {
-    var dom1 = getDomArray(element1)[0];
-    var dom2 = getDomArray(element2)[0];
-    var isMoreLeft = offset(dom1).left > offset(dom2).left + dom2.offsetWidth;
-    var isLessRight = offset(dom1).left + dom1.offsetWidth < offset(dom2).left;
-    var isMoreTop = offset(dom1).top > offset(dom2).top + dom2.offsetHeight;
-    var isLessBottom = offset(dom1).top + dom1.offsetHeight < offset(dom2).top;
-    return !(isMoreLeft || isLessRight || isMoreTop || isLessBottom);
+    // dom1
+    var one = getDomArray(element1)[0];
+    var onePositionX = 'overlay'; // 重叠
+    var onePositionY = 'overlay'; // 重叠
+    var oneLeft = offset(one).left;
+    var oneTop = offset(one).top;
+    var oneWidth = one.offsetWidth;
+    var oneHeight = one.offsetHeight;
+    var oneCenterX = oneLeft + oneWidth / 2;
+    var oneCenterY = oneTop + oneHeight / 2;
+    // dom2
+    var two = getDomArray(element2)[0];
+    var twoPositionX = 'overlay'; // 重叠
+    var twoPositionY = 'overlay'; // 重叠
+    var twoLeft = offset(two).left;
+    var twoTop = offset(two).top;
+    var twoWidth = two.offsetWidth;
+    var twoHeight = two.offsetHeight;
+    var twoCenterX = twoLeft + twoWidth / 2;
+    var twoCenterY = twoTop + twoHeight / 2;
+    // 计算位置
+    if (oneCenterX - twoCenterX > 0) {
+        onePositionX = 'right';
+        twoPositionX = 'left';
+    } else if (oneCenterX - twoCenterX < 0) {
+        onePositionX = 'left';
+        twoPositionX = 'right';
+    }
+    if (oneCenterY - twoCenterY > 0) {
+        onePositionY = 'bottom';
+        twoPositionY = 'top';
+    } else if (oneCenterY - twoCenterY < 0) {
+        onePositionY = 'top';
+        twoPositionY = 'bottom';
+    }
+    // 计算碰撞
+    var isMoreLeft = oneLeft > twoLeft + two.offsetWidth;
+    var isLessRight = oneLeft + one.offsetWidth < twoLeft;
+    var isMoreTop = oneTop > twoTop + two.offsetHeight;
+    var isLessBottom = oneTop + one.offsetHeight < twoTop;
+    // 返回结果
+    return {
+        isImpact: !(isMoreLeft || isLessRight || isMoreTop || isLessBottom),
+        onePositionX: onePositionX,
+        onePositionY: onePositionY,
+        twoPositionX: twoPositionX,
+        twoPositionY: twoPositionY
+    };
 }
 
 module.exports = checkDomImpact;
