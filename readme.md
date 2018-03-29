@@ -1,6 +1,7 @@
 # 检测两个dom是否碰撞了
 ```
 const checkDomImpact = require('zhf.check-dom-impact');
+
 const result = checkDomImpact('html', 'body');
 ```
 * 返回值result是一个对象，对象上有五个属性：
